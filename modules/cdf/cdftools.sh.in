@@ -1,0 +1,5 @@
+#!/bin/sh -l
+
+module load cdf
+JAVA=/etc/alternatives/java
+exec ${JAVA} -cp @CDFLIB@:@CDFLIB@/cdfjava/cdftools/CDFToolsDriver.jar:@CDFLIB@/cdfjava/classes/cdfjava.jar:${CLASSPATH} CDFToolsDriver

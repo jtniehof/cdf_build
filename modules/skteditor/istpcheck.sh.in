@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+module load cdf #Needs to be bash for this to work
+exec java -cp "@LIBDIR@/skteditor/spdfjavaClasses.jar:${CLASSPATH}" gsfc.spdf.istp.tools.CDFCheck "$@"

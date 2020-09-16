@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec java -Djava.library.path=@LIBDIR@ -cp "@LIBDIR@/skteditor/spdfjavaClasses.jar:@LIBDIR@/cdfjava/classes/cdfjava.jar:@LIBDIR@/cdfjava/cdftools/CDFToolsDriver.jar:${CLASSPATH}" gsfc.spdf.istp.tools.CDFCheck "$@"

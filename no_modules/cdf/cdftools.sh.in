@@ -1,0 +1,5 @@
+#!/bin/sh -l
+
+JAVA=/etc/alternatives/java
+export CDF_BASE=@CDFBASE@
+exec ${JAVA} -cp @CDFLIB@:@CDFLIB@/cdfjava/cdftools/CDFToolsDriver.jar:@CDFLIB@/cdfjava/classes/cdfjava.jar:${CLASSPATH} CDFToolsDriver

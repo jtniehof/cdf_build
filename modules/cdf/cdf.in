@@ -1,0 +1,41 @@
+#%Module1.0#####################################################################
+##
+## Set up environment for CDF library
+##
+## 20150721 JTN
+##
+set CDFVER @CDFVER@
+set CDFBASE @CDFBASE@
+set CDFBIN @CDFBIN@
+set CDFINC @CDFINC@
+set CDFLIB @CDFLIB@
+set DATADIR @DATADIR@
+
+proc ModuleHelp { } {
+        puts stderr "\tSet up the environment to use CDF ${CDFVER}"
+        puts stderr "\tUse instead of definitions.X file."
+}
+
+module-whatis "NASA\'s CDF library ${CDFVER}"
+
+conflict cdf
+
+package require EnvironmentModulesHelper 1.0
+
+setenv-save CDF_BASE "${CDFBASE}"
+setenv-save CDF_INC "${CDFINC}"
+setenv-save CDF_LIB "${CDFLIB}"
+setenv-save CDF_BIN "${CDFBIN}"
+setenv-save CDF_JAVA "${CDFLIB}/cdfjava"
+setenv-save CDF_HELP "${CDFLIB}/cdf/help"
+setenv-save CDF_LEADPSECONDSTABLE "${DATADIR}/CDFLeapSeconds.txt"
+append-path CLASSPATH "${CDFLIB}/cdfjava/classes/cdfjava.jar"
+append-path CLASSPATH "${CDFLIB}/cdfjava/cdftools/CDFToolsDriver.jar"
+append-path LD_LIBRARY_PATH "${CDFLIB}"
+if { $x64} {
+    setenv-save JAVA_HOME "/usr/lib/jvm/default-java"
+} else {
+    setenv-save JAVA_HOME "/usr/lib/jvm/default-java"
+}
+set-alias cdfbrowse "${CDFBIN}/cdfedit -prompt -browse"
+set-alias cdftools "java CDFToolsDriver"
